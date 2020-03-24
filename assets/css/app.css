@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('./fontawesome.min.css');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --page-min-width  : 320px;
+    --page-max-width  : 840px;
+    --option-size     : 150px;
+    --bg-color        : #54588e;
+    --dark-blue-color : #272944;
+    --text-color      : #fff;
+    --lose-color      : #dc3545;
+    --win-color       : #28a745;
+    --light-gray-color: #ccc;
+    --border-radius   : 5px;
+    --box-gap         : 5%;
+    --box-shadow      : 0 1px 2px rgba(0,0,0,0.07), 
+            0 2px 4px rgba(0,0,0,0.07), 
+            0 4px 8px rgba(0,0,0,0.07), 
+            0 8px 16px rgba(0,0,0,0.07),
+            0 16px 32px rgba(0,0,0,0.07), 
+            0 32px 64px rgba(0,0,0,0.07);
+}
+
+body {
+    line-height: 1.6;
+    font-family: 'Roboto', cursive, sans-serif;
+    font-size: 14px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+rps-game {
+    display: block;
+    min-width: var(--page-min-width);
+    max-width: var(--page-max-width);
+    margin: 0 auto;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.score-board {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--box-gap);
+    margin: 30px 0;
+}
+
+.player-score {
+    background-color: var(--dark-blue-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.player-score span {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+#status {
+    height: 55px;
+    margin-bottom: 20px;
+}
+
+.tie {
+    color: #fff;
+}
+.win {
+    color: var(--win-color);
+}
+.lose {
+    color: var(--lose-color);
+}
+
+.tie, .lose, .win {
+    font-size: 2.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+}
+
+.loading:after {
+    content: ' .';
+    animation: dots 1s steps(5, end) infinite;
+}
+  
+@keyframes dots {
+    0%, 20% {
+      color: #000;
+      text-shadow:
+        .25em 0 0 #000,
+        .5em 0 0 #000;
+    }
+    40% {
+      color: #fff;
+      text-shadow:
+        .25em 0 0 #000,
+        .5em 0 0 #000;
+    }
+    60% {
+      text-shadow:
+        .25em 0 0 #fff,
+        .5em 0 0 #000;
+    }
+    80%, 100% {
+      text-shadow:
+        .25em 0 0 #fff,
+        .5em 0 0 #fff;
+    }
+}
+
+.hands {
+    display: grid;
+    gap: var(--box-gap);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.rock::before {
+    background-image: url(../images/rock.png);
+}
+.paper::before {
+    background-image: url(../images/paper.png);
+}
+.scissors::before {
+    background-image: url(../images/scissors.png);
+}
+
+#player1, #player2 {
+    box-shadow: var(--box-shadow);
+}
+
+#player1::before,
+#player2::before {
+    content: '';
+    display: block;
+    height: 268px;
+    background-repeat: no-repeat;
+}
+
+#player1::before {
+    transform: rotateY(180deg);
+}
+
+.animPlayer1::before {
+    animation: animPlayer1 2s ease;
+}
+.animPlayer2::before {
+    animation: animPlayer2 2s ease;
+}
+
+@keyframes animPlayer1 {
+    0%, 25%, 50%, 75%, 100% {
+      transform: rotateY(180deg) translateY(0);
+    }
+    15%, 35%, 65%, 85% {
+      transform: rotateY(180deg) translateY(-50px);
+    }
+}
+  
+@keyframes animPlayer2 {
+    0%, 25%, 50%, 75%, 100% {
+        transform: translateY(0);
+    }
+    15%, 35%, 65%, 85% {
+        transform: translateY(-50px);
+    }
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(3, var(--option-size));
+    align-items: stretch;
+    justify-content: space-around;
+    margin: 55px 0;
+}
+
+player-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--option-size);
+    opacity: 0.9;
+    box-shadow: var(--box-shadow);
+    border-radius: 50%;
+    background: #fff;
+    color: var(--dark-blue-color);
+}
+
+player-option:hover {
+    background-color: inherit;
+    color: #fff;
+}
+
+player-option:active,
+player-option:visited {
+    color: #fff;
+}
+
+.choice {
+    cursor: pointer;
+}
+
+.restart {
+    padding: 10px 15px;
+    border: 0;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 4px 0px 0 var(--light-gray-color);
+    background-color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+.restart:hover {
+    background: var(--dark-blue-color);
+    color: #fff;
+}
