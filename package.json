@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "start": "npx serve",
     "test": "jest --env=jest-environment-happy-dom"
   },
   "devDependencies": {
